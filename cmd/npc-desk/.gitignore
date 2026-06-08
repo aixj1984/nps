@@ -2,4 +2,6 @@ deskreen-gui
 deskreen-gui.exe
 webui/node_modules/
 webui/dist/
+frontend/node_modules/
+frontend/dist/
 *.syso
