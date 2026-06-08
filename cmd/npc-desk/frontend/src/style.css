@@ -1,0 +1,106 @@
+/* Deskreen CE / Blueprint-inspired host theme */
+:root {
+  font-family: 'Segoe UI', 'Helvetica Neue', system-ui, sans-serif;
+  --bp-blue: #106ba3;
+  --bp-blue2: #2b95d6;
+  --bp-green: #0f9960;
+  --bp-red: #db3737;
+  --bp-orange: #d9822b;
+  --bg: #f5f8fa;
+  --panel: #ffffff;
+  --text: #182026;
+  --muted: #5c7080;
+  --border: #d8e1e8;
+  --shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 2px 4px rgba(16, 22, 26, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  transition: background 0.15s;
+}
+
+button.bp-primary {
+  background: var(--bp-blue);
+  color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2);
+}
+
+button.bp-primary:hover:not(:disabled) {
+  background: #0d5a8a;
+}
+
+button.bp-success {
+  background: var(--bp-green);
+  color: #fff;
+}
+
+button.bp-danger {
+  background: var(--bp-red);
+  color: #fff;
+}
+
+button.bp-minimal {
+  background: transparent;
+  color: var(--bp-blue);
+  border: none;
+  box-shadow: none;
+}
+
+button.bp-minimal:hover {
+  background: rgba(19, 124, 189, 0.1);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.card {
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  border-radius: 3px;
+  padding: 20px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge.ok {
+  background: rgba(15, 153, 96, 0.12);
+  color: var(--bp-green);
+}
+
+.badge.warn {
+  background: rgba(217, 130, 43, 0.15);
+  color: var(--bp-orange);
+}
+
+.badge.info {
+  background: rgba(16, 107, 163, 0.12);
+  color: var(--bp-blue);
+}

@@ -60,6 +60,10 @@ var HasFailed = false
 
 func (s *TRPClient) Start(ctx context.Context) {
 	s.ctx, s.cancel = context.WithCancel(ctx)
+	go func() {
+		<-s.ctx.Done()
+		s.Close()
+	}()
 	defer s.Close()
 	NowStatus = 0
 	if Ver < 5 {
@@ -429,6 +433,8 @@ func (s *TRPClient) handleChan(src net.Conn) {
 	//socks5 udp
 	if lk.ConnType == "udp5" {
 		logs.Trace("new %s connection of udp5, remote address:%s", lk.ConnType, lk.RemoteAddr)
+		BeginForward()
+		defer EndForward()
 		if LocalIPForward {
 			conn.HandleUdp5(s.ctx, src, lk.Option.Timeout, s.localIP)
 		} else {
@@ -447,6 +453,8 @@ func (s *TRPClient) handleChan(src net.Conn) {
 		}
 		rwc := conn.GetConn(src, lk.Crypt, lk.Compress, nil, false, false)
 		c := conn.WrapConn(rwc, src)
+		BeginForward()
+		defer EndForward()
 		vl.ServeVirtual(c)
 		return
 	}
@@ -476,7 +484,8 @@ func (s *TRPClient) handleChan(src net.Conn) {
 	} else {
 		logs.Trace("new %s connection with the goal of %s, remote address:%s", lk.ConnType, lk.Host, lk.RemoteAddr)
 		isFramed := lk.ConnType == "udp" && Ver > 6
-		//logs.Debug("%t", isFramed)
+		BeginForward()
+		defer EndForward()
 		conn.CopyWaitGroup(src, targetConn, lk.Crypt, lk.Compress, nil, nil, false, 0, nil, nil, false, isFramed)
 	}
 }

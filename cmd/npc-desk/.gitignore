@@ -1,0 +1,5 @@
+deskreen-gui
+deskreen-gui.exe
+webui/node_modules/
+webui/dist/
+*.syso
