@@ -44,7 +44,7 @@ const emit = defineEmits<{
     </div>
 
     <p class="config-path">配置文件：<code>{{ status.configPath || '未保存' }}</code></p>
-    <p v-if="status.lastError" class="error">{{ status.lastError }}</p>
+    <p v-if="status.lastError && !status.connected" class="error">{{ status.lastError }}</p>
 
     <div class="control-row">
       <button
