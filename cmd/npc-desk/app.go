@@ -10,12 +10,12 @@ import (
 	"sync"
 	"time"
 
-	"mochi-deskreen/internal/capture"
-	"mochi-deskreen/internal/deskreen"
-	"mochi-deskreen/internal/netutil"
-	"mochi-deskreen/internal/server"
-	"mochi-deskreen/internal/session"
-	"mochi-deskreen/internal/stream"
+	"npc-deskreen/internal/capture"
+	"npc-deskreen/internal/deskreen"
+	"npc-deskreen/internal/netutil"
+	"npc-deskreen/internal/server"
+	"npc-deskreen/internal/session"
+	"npc-deskreen/internal/stream"
 
 	"github.com/wailsapp/wails/v2/pkg/runtime"
 )

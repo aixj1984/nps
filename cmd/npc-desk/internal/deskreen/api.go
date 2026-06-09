@@ -1,6 +1,6 @@
 package deskreen
 
-import "mochi-deskreen/internal/capture"
+import "npc-deskreen/internal/capture"
 
 // RoomState is JSON returned to the Fyne wizard (/api/host).
 type RoomState struct {

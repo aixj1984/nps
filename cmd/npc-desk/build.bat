@@ -42,11 +42,11 @@ go run ./cmd/genwindows
 if errorlevel 1 exit /b 1
 
 echo [6/6] go build -tags desktop,production ...
-go build -tags desktop,production -ldflags "-w -s -H windowsgui" -o mochi-deskreen.exe .
+go build -tags desktop,production -ldflags "-w -s -H windowsgui" -o npc-deskreen.exe .
 if errorlevel 1 exit /b 1
 
-if exist mochi-deskreen-res.syso del /q mochi-deskreen-res.syso
+if exist npc-deskreen-res.syso del /q npc-deskreen-res.syso
 
-echo Done: mochi-deskreen.exe
+echo Done: npc-deskreen.exe
 echo See https://wails.io/docs/guides/manual-builds/
 endlocal

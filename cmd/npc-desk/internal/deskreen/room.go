@@ -3,7 +3,7 @@ package deskreen
 import (
 	"sync"
 
-	"mochi-deskreen/internal/capture"
+	"npc-deskreen/internal/capture"
 
 	"github.com/google/uuid"
 )

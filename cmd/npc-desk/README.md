@@ -14,13 +14,13 @@
 
 使用 **[Wails v2](https://github.com/wailsapp/wails)** 仿制的 **[Deskreen CE](https://github.com/pavlobu/deskreen)**：将带浏览器的设备变成电脑副屏，通过 **WebRTC** 共享桌面。
 
-| 原版 Deskreen | 本项目 |
-|---------------|--------|
-| Electron + React 主机 | **Wails + Vue 3** 主机 |
-| 内嵌 React 查看端 | 内嵌 **Vue 3** 查看端 (`webui/`) |
+| 原版 Deskreen            | 本项目                                                                                                    |
+| ------------------------ | --------------------------------------------------------------------------------------------------------- |
+| Electron + React 主机    | **Wails + Vue 3** 主机                                                                                    |
+| 内嵌 React 查看端        | 内嵌 **Vue 3** 查看端 (`webui/`)                                                                          |
 | WebRTC 视频轨 (VP8/H264) | **信令/ICE/DataChannel 走 WebRTC**；画面为 **PrintWindow/显示器采集 + JPEG**（免 libvpx，后续可换媒体轨） |
-| 端口 3131/3132 | 相同 |
-| 三步向导 + 允许/拒绝 | 相同 |
+| 端口 3131/3132           | 相同                                                                                                      |
+| 三步向导 + 允许/拒绝     | 相同                                                                                                      |
 
 ## 功能（Deskreen CE 对齐）
 
@@ -58,7 +58,7 @@ build-npc.bat
 按 [Wails 手动构建指南](https://wails.io/docs/guides/manual-builds/) 编译（不依赖 `wails build` 打包步骤）：
 
 ```bat
-cd mochi-deskreen
+cd npc-deskreen
 build.bat
 ```
 
@@ -67,10 +67,10 @@ build.bat
 1. 构建 `webui` → `web/dist`（浏览器查看端）
 2. 构建 `frontend` → `frontend/dist`（Wails 主机 UI）
 3. （可选）`wails generate module` 生成 `wailsjs` 绑定
-4. `go run ./tools/genwindows` 生成 `icon.ico` 与 `mochi-deskreen-res.syso`
+4. `go run ./tools/genwindows` 生成 `icon.ico` 与 `npc-deskreen-res.syso`
 5. `go build -tags desktop,production -ldflags "-w -s -H windowsgui"`
 
-产出：`mochi-deskreen.exe`
+产出：`npc-deskreen.exe`
 
 调试版（保留控制台、`dev` 标签）：
 
@@ -88,19 +88,19 @@ wails dev
 ### 启动失败排查
 
 - 安装 [WebView2 运行时](https://developer.microsoft.com/microsoft-edge/webview2/)
-- 查看 exe 同目录下的 `mochi-deskreen-startup.log`
+- 查看 exe 同目录下的 `npc-deskreen-startup.log`
 - 勿运行旧的 `deskreen-gui.exe`（已废弃的 Fyne 版本）
 - 勿单独 `go build` 而跳过 `tools/genwindows` 与 `desktop,production` 标签
 
 ## 使用
 
-1. 运行 `mochi-deskreen.exe`
+1. 运行 `npc-deskreen.exe`
 2. 浏览器打开 `http://<局域网IP>:3131/<房间ID>`（界面可复制/扫码）
 3. 主机 **允许** → 选择屏幕或窗口 → **确认**
 4. 查看端显示桌面画面
 
 ```bat
-mochi-deskreen.exe --ip 192.168.1.100
+npc-deskreen.exe --ip 192.168.1.100
 ```
 
 ## 结构

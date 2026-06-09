@@ -7,9 +7,9 @@ import (
 	"sync"
 	"time"
 
-	"mochi-deskreen/internal/capture"
-	"mochi-deskreen/internal/session"
-	"mochi-deskreen/internal/signal"
+	"npc-deskreen/internal/capture"
+	"npc-deskreen/internal/session"
+	"npc-deskreen/internal/signal"
 
 	"github.com/pion/webrtc/v4"
 )

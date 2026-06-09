@@ -8,8 +8,8 @@ if not exist frontend\dist\index.html (
 )
 go run ./cmd/genwindows
 if errorlevel 1 exit /b 1
-go build -tags dev -gcflags "all=-N -l" -ldflags "-H windowsgui" -o mochi-deskreen-debug.exe .
+go build -tags dev -gcflags "all=-N -l" -ldflags "-H windowsgui" -o npc-deskreen-debug.exe .
 if errorlevel 1 exit /b 1
-if exist mochi-deskreen-res.syso del /q mochi-deskreen-res.syso
-echo Done: mochi-deskreen-debug.exe
+if exist npc-deskreen-res.syso del /q npc-deskreen-res.syso
+echo Done: npc-deskreen-debug.exe
 endlocal

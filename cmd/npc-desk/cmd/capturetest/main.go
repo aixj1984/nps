@@ -7,7 +7,7 @@ import (
 	"image/png"
 	"os"
 
-	"mochi-deskreen/internal/capture"
+	"npc-deskreen/internal/capture"
 )
 
 func main() {

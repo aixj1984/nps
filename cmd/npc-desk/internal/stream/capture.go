@@ -6,8 +6,8 @@ import (
 	"log"
 	"time"
 
-	"mochi-deskreen/internal/capture"
-	"mochi-deskreen/internal/session"
+	"npc-deskreen/internal/capture"
+	"npc-deskreen/internal/session"
 
 	"github.com/nfnt/resize"
 	"github.com/pion/webrtc/v4"

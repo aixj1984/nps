@@ -1,4 +1,4 @@
-module mochi-deskreen
+module npc-deskreen
 
 go 1.26
 

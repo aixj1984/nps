@@ -1,4 +1,4 @@
-// Generates build/windows/icon.ico and mochi-deskreen-res.syso
+// Generates build/windows/icon.ico and npc-deskreen-res.syso
 // See https://wails.io/docs/guides/manual-builds/
 package main
 
@@ -81,7 +81,7 @@ func main() {
 		rs.SetVersionInfo(v)
 	}
 
-	sysoPath := filepath.Join(root, strings.ReplaceAll("mochi-deskreen", " ", "_")+"-res.syso")
+	sysoPath := filepath.Join(root, strings.ReplaceAll("npc-deskreen", " ", "_")+"-res.syso")
 	out, err := os.Create(sysoPath)
 	if err != nil {
 		fatal(err)

@@ -3,8 +3,8 @@ package main
 import (
 	"encoding/json"
 
-	"mochi-deskreen/internal/deskreen"
-	"mochi-deskreen/internal/netutil"
+	"npc-deskreen/internal/deskreen"
+	"npc-deskreen/internal/netutil"
 )
 
 // statusMap builds a JSON-friendly map for Wails EventsEmit and Vue (avoids nested struct IPC issues).

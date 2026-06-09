@@ -5,9 +5,9 @@ import (
 	"log"
 	"strings"
 
-	"mochi-deskreen/internal/session"
-	"mochi-deskreen/internal/signal"
-	"mochi-deskreen/internal/stream"
+	"npc-deskreen/internal/session"
+	"npc-deskreen/internal/signal"
+	"npc-deskreen/internal/stream"
 )
 
 // Controller ties Room state, viewer socket, and streaming together.

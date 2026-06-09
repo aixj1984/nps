@@ -7,17 +7,17 @@ import (
 	"log"
 	"net"
 	"net/http"
+	"npc-deskreen/internal/capture"
+	"npc-deskreen/internal/deskreen"
+	"npc-deskreen/internal/netutil"
+	"npc-deskreen/internal/session"
+	"npc-deskreen/internal/signal"
+	"npc-deskreen/internal/stream"
 	"strings"
 	"sync"
 	"time"
 
-	"mochi-deskreen/internal/capture"
-	"mochi-deskreen/internal/deskreen"
-	"mochi-deskreen/internal/netutil"
-	"mochi-deskreen/internal/session"
-	"mochi-deskreen/internal/signal"
-	"mochi-deskreen/internal/stream"
-	appweb "mochi-deskreen/web"
+	appweb "npc-deskreen/web"
 
 	"github.com/gorilla/websocket"
 )
@@ -37,12 +37,12 @@ type Config struct {
 
 // Server serves Vue viewer + Deskreen CE APIs.
 type Server struct {
-	cfg        Config
-	room       *deskreen.Room
-	ctrl       *deskreen.Controller
-	viewers    *session.Manager
-	stream     *stream.Host
-	srv        *http.Server
+	cfg          Config
+	room         *deskreen.Room
+	ctrl         *deskreen.Controller
+	viewers      *session.Manager
+	stream       *stream.Host
+	srv          *http.Server
 	onRoomChange func()
 }
 

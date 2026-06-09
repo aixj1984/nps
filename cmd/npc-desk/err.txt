@@ -1,3 +1,0 @@
-2026/05/22 14:58:13 [WebView2] Environment created successfully
-2026/05/22 14:58:14 deskreen http :3131 room=50de4c4d-8543-4b7c-9acb-b66a4d8c7f21 url=http://172.23.64.1:3131/50de4c4d-8543-4b7c-9acb-b66a4d8c7f21
-2026/05/22 15:00:44 viewer USER_ENTER from 172.23.64.1 room=50de4c4d-8543-4b7c-9acb-b66a4d8c7f21

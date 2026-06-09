@@ -6,8 +6,8 @@ import (
 	"sync"
 	"time"
 
-	"mochi-deskreen/internal/npc"
-	"mochi-deskreen/internal/npc/configdoc"
+	"npc-deskreen/internal/npc"
+	"npc-deskreen/internal/npc/configdoc"
 
 	"github.com/djylb/nps/lib/logs"
 	"github.com/wailsapp/wails/v2/pkg/runtime"
