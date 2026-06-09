@@ -10,11 +10,13 @@ const configDocument = defineModel<ConfigDocument>('document', { required: true 
 defineProps<{
   path: string
   saving?: boolean
+  dirty?: boolean
 }>()
 
 const emit = defineEmits<{
   saveVisual: []
   saveRaw: []
+  cancel: []
   openFolder: []
 }>()
 
@@ -28,6 +30,11 @@ async function handleSave() {
     return
   }
   emit('saveRaw')
+}
+
+function handleCancel() {
+  emit('cancel')
+  void visualRef.value?.validateNow()
 }
 </script>
 
@@ -47,6 +54,15 @@ async function handleSave() {
           @click="visualRef?.validateNow()"
         >
           校验
+        </button>
+        <button
+          v-if="dirty"
+          type="button"
+          class="bp-minimal cancel-btn"
+          :disabled="saving"
+          @click="handleCancel"
+        >
+          取消
         </button>
         <button
           type="button"
@@ -128,5 +144,9 @@ async function handleSave() {
   align-items: center;
   gap: 8px;
   flex-shrink: 0;
+}
+
+.cancel-btn {
+  color: var(--muted);
 }
 </style>

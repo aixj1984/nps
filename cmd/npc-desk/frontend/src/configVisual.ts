@@ -230,6 +230,10 @@ export function pruneEmptyFields(doc: ConfigDocument): ConfigDocument {
   return next
 }
 
+export function documentsEqual(a: ConfigDocument, b: ConfigDocument): boolean {
+  return JSON.stringify(cloneDocument(a)) === JSON.stringify(cloneDocument(b))
+}
+
 export function cloneDocument(doc: ConfigDocument): ConfigDocument {
   return {
     mode: doc.mode,

@@ -1,11 +1,17 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { EventsOn } from './wailsjs/runtime/runtime'
 import NpcHeader from './components/NpcHeader.vue'
 import ConnectionPanel from './components/ConnectionPanel.vue'
 import ServicesPanel from './components/ServicesPanel.vue'
 import ConfigPanel from './components/ConfigPanel.vue'
-import { normalizeDocument, toWailsDocument, type ConfigDocument } from './configVisual'
+import {
+  cloneDocument,
+  documentsEqual,
+  normalizeDocument,
+  toWailsDocument,
+  type ConfigDocument,
+} from './configVisual'
 import LogsPanel from './components/LogsPanel.vue'
 import type { NpcStatus } from './types'
 import { normalizeNpcStatus } from './npcStatus'
@@ -27,12 +33,31 @@ import {
 const status = ref<NpcStatus | null>(null)
 const configContent = ref('')
 const configDocument = ref<ConfigDocument>({ sections: [], mode: 'common_only' })
+const configBaselineContent = ref('')
+const configBaselineDocument = ref<ConfigDocument>({ sections: [], mode: 'common_only' })
 const configPath = ref('')
 const logs = ref('')
 const error = ref('')
 const busy = ref(false)
 const saving = ref(false)
 const activeTab = ref<'dashboard' | 'config' | 'logs'>('dashboard')
+
+const configDirty = computed(
+  () =>
+    configContent.value !== configBaselineContent.value
+    || !documentsEqual(configDocument.value, configBaselineDocument.value),
+)
+
+function captureConfigBaseline() {
+  configBaselineContent.value = configContent.value
+  configBaselineDocument.value = cloneDocument(configDocument.value)
+}
+
+function cancelConfigEdit() {
+  configContent.value = configBaselineContent.value
+  configDocument.value = cloneDocument(configBaselineDocument.value)
+  error.value = ''
+}
 
 async function refresh() {
   try {
@@ -47,6 +72,7 @@ async function loadConfig() {
   configContent.value = await GetConfigContent()
   configPath.value = await GetConfigPath()
   configDocument.value = normalizeDocument(await GetConfigDocument())
+  captureConfigBaseline()
 }
 
 async function loadLogs() {
@@ -197,8 +223,10 @@ onUnmounted(() => unlisten?.())
           v-model:document="configDocument"
           :path="configPath"
           :saving="saving"
+          :dirty="configDirty"
           @save-visual="saveConfigVisual"
           @save-raw="saveConfigRaw"
+          @cancel="cancelConfigEdit"
           @open-folder="openConfigFolder"
         />
       </template>
